@@ -23,6 +23,7 @@
     <div id="dayNightIndicator">
       <span id="dnIcon">&#9728;</span>
       <span id="dnLabel">Day 1</span>
+      <span id="modeLabel"></span>
     </div>
     <div id="saveControls">
       <button id="saveBtn">Save</button>
@@ -56,8 +57,13 @@
      Left Click: break block / shoot gun &nbsp; Right Click: place block<br>
      1-9 or scroll: select hotbar slot &nbsp; C or E: crafting menu<br>
      F5: save game &nbsp; F9: load game<br>
+     Survival: mine resources, craft a pickaxe to break stone. Creative: unlimited blocks, instant break, no damage.<br>
      Zombies &amp; Skeletons spawn at night and burn in daylight. Craft guns to fight back!</p>
-  <button id="startBtn">Click to Play</button>
+  <div id="modeSelect">
+    <button id="survivalBtn">Play Survival</button>
+    <button id="creativeBtn">Play Creative</button>
+  </div>
+  <button id="continueBtn" class="hidden">Continue</button>
   <div id="loadHint"></div>
 </div>
 

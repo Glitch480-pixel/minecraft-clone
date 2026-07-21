@@ -51,6 +51,7 @@
     this.resourceBar = document.getElementById('resourceBar');
     this.dnIcon = document.getElementById('dnIcon');
     this.dnLabel = document.getElementById('dnLabel');
+    this.modeLabel = document.getElementById('modeLabel');
     this.toastEl = document.getElementById('toast');
     this.craftingPanel = document.getElementById('craftingPanel');
     this.craftResources = document.getElementById('craftResources');
@@ -58,6 +59,8 @@
     this.deathScreen = document.getElementById('deathScreen');
     this.startScreen = document.getElementById('startScreen');
     this.loadHint = document.getElementById('loadHint');
+    this.modeSelect = document.getElementById('modeSelect');
+    this.continueBtn = document.getElementById('continueBtn');
     this.toastTimer = null;
 
     this.slots = [];
@@ -104,11 +107,12 @@
       var count = el.querySelector('.count');
       var label = el.querySelector('.label');
       if (slotData.kind === 'block') {
+        var creative = inv.isCreative();
         img.style.visibility = 'visible';
         img.src = blockIconDataURL(slotData.id);
-        count.textContent = slotData.count > 0 ? slotData.count : '';
-        label.textContent = slotData.count > 0 ? G.Blocks.DEFS[slotData.id].name : '';
-        el.style.opacity = slotData.count > 0 ? '1' : '0.45';
+        count.textContent = creative ? '∞' : (slotData.count > 0 ? slotData.count : '');
+        label.textContent = (creative || slotData.count > 0) ? G.Blocks.DEFS[slotData.id].name : '';
+        el.style.opacity = (creative || slotData.count > 0) ? '1' : '0.45';
       } else { // gun
         if (slotData.id) {
           img.style.visibility = 'visible';
@@ -129,6 +133,12 @@
   UI.prototype.updateDayNight = function (isDay, dayCount, frac) {
     this.dnIcon.innerHTML = isDay ? '&#9728;' : '&#9789;';
     this.dnLabel.textContent = (isDay ? 'Day ' : 'Night ') + dayCount;
+  };
+
+  UI.prototype.updateMode = function (mode) {
+    var creative = mode === 'creative';
+    this.modeLabel.textContent = creative ? 'Creative' : 'Survival';
+    this.modeLabel.classList.toggle('creative', creative);
   };
 
   UI.prototype.toast = function (msg) {
@@ -166,12 +176,12 @@
     G.RECIPES.forEach(function (r) {
       var row = document.createElement('div');
       row.className = 'recipe';
-      var costStr = Object.keys(r.cost).map(function (k) { return r.cost[k] + ' ' + RESOURCE_LABELS[k]; }).join(', ');
-      var already = r.give.gun && inv.guns[r.give.gun];
+      var costStr = inv.isCreative() ? 'Free (Creative)' : Object.keys(r.cost).map(function (k) { return r.cost[k] + ' ' + RESOURCE_LABELS[k]; }).join(', ');
+      var already = (r.give.gun && inv.guns[r.give.gun]) || (r.give.tool && inv.tools[r.give.tool]);
       row.innerHTML = '<div class="info">' + r.name + '<span class="cost">' + costStr + '</span></div>';
       var btn = document.createElement('button');
       btn.textContent = already ? 'Owned' : 'Craft';
-      btn.disabled = already || !inv.canAfford(r.cost);
+      btn.disabled = already || (!inv.isCreative() && !inv.canAfford(r.cost));
       btn.addEventListener('click', function () {
         var res = inv.craft(r.id);
         self.toast(res.msg);
@@ -186,9 +196,24 @@
   UI.prototype.showDeath = function () { this.deathScreen.classList.remove('hidden'); };
   UI.prototype.hideDeath = function () { this.deathScreen.classList.add('hidden'); };
 
-  UI.prototype.showStart = function (hasSave) {
+  UI.prototype.showStart = function (hasSave, isResume) {
     this.startScreen.classList.remove('hidden');
-    this.loadHint.textContent = hasSave ? 'A saved world was found — it will load automatically.' : '';
+    if (isResume) {
+      this.modeSelect.style.display = 'none';
+      this.continueBtn.classList.remove('hidden');
+      this.continueBtn.textContent = 'Click to Resume';
+      this.loadHint.textContent = '';
+      return;
+    }
+    this.modeSelect.style.display = 'flex';
+    if (hasSave) {
+      this.continueBtn.classList.remove('hidden');
+      this.continueBtn.textContent = 'Continue Saved Game';
+      this.loadHint.textContent = 'A saved world was found.';
+    } else {
+      this.continueBtn.classList.add('hidden');
+      this.loadHint.textContent = '';
+    }
   };
   UI.prototype.hideStart = function () { this.startScreen.classList.add('hidden'); };
 

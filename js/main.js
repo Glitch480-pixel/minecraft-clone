@@ -70,6 +70,7 @@
     } else {
       player.respawn(8, 8);
     }
+    player.invulnerable = inventory.isCreative();
     world.update(player.position);
 
     damageFlashEl = document.getElementById('damageFlash');
@@ -84,16 +85,32 @@
     setupInput();
     setupButtons();
 
-    ui.showStart(G.Save.hasLocalSave());
+    ui.showStart(G.Save.hasLocalSave(), false);
 
     window.addEventListener('resize', onResize);
 
     G.debug = {
       game: game, world: world, player: player, inventory: inventory, mobManager: mobManager,
-      setDayTime: function (t) { dayTime = t; }, isDay: isDay
+      setDayTime: function (t) { dayTime = t; }, isDay: isDay, resetGameState: resetGameState
     };
 
     requestAnimationFrame(animate);
+  }
+
+  function resetGameState(mode) {
+    var newSeed = Math.floor(Math.random() * 1e9);
+    world.setSeed(newSeed);
+    world.overrides.clear();
+    inventory.reset(mode);
+    mobManager.mobs.forEach(function (m) { m.remove(scene); });
+    mobManager.mobs = [];
+    mobManager.arrows.forEach(function (a) { scene.remove(a.mesh); });
+    mobManager.arrows = [];
+    dayTime = 0.3; dayCount = 1;
+    world.generateChunk(0, 0);
+    player.respawn(8, 8);
+    player.invulnerable = inventory.isCreative();
+    world.update(player.position);
   }
 
   function flashDamage() {
@@ -160,8 +177,7 @@
 
     player.onLockChange = function (locked) {
       if (!locked && gameStarted && player.alive && !suppressAutoRelock && !ui.isCraftingOpen()) {
-        ui.showStart(false);
-        document.getElementById('startBtn').textContent = 'Click to Resume';
+        ui.showStart(false, true);
       }
     };
 
@@ -191,17 +207,28 @@
     if (data.seed !== world.seed) world.setSeed(data.seed);
     else world.reset();
     G.Save.applyToGame(game, data);
+    player.invulnerable = inventory.isCreative();
     world.update(player.position);
     ui.toast('Game loaded (F9)');
   }
 
+  function enterPlay() {
+    ui.hideStart();
+    gameStarted = true;
+    ui.showPlayUI();
+    player.lock();
+  }
+
   function setupButtons() {
-    document.getElementById('startBtn').addEventListener('click', function () {
-      ui.hideStart();
-      gameStarted = true;
-      ui.showPlayUI();
-      player.lock();
+    document.getElementById('survivalBtn').addEventListener('click', function () {
+      resetGameState('survival');
+      enterPlay();
     });
+    document.getElementById('creativeBtn').addEventListener('click', function () {
+      resetGameState('creative');
+      enterPlay();
+    });
+    document.getElementById('continueBtn').addEventListener('click', enterPlay);
     document.getElementById('respawnBtn').addEventListener('click', function () {
       ui.hideDeath();
       player.respawn(player.position.x, player.position.z);
@@ -223,12 +250,15 @@
         if (data.seed !== world.seed) world.setSeed(data.seed);
         else world.reset();
         G.Save.applyToGame(game, data);
+        player.invulnerable = inventory.isCreative();
         world.update(player.position);
         ui.toast('Save imported');
       });
       e.target.value = '';
     });
   }
+
+  var lastNoPickaxeToast = -999;
 
   function updateMiningAndShooting(dt) {
     if (!leftDown || !player.locked || !player.alive || ui.isCraftingOpen()) {
@@ -246,11 +276,23 @@
     var blockId = world.getBlock(hit.x, hit.y, hit.z);
     var def = DEFS[blockId];
     if (!def || def.hardness === Infinity) return;
+
+    if (!inventory.canMine(def)) {
+      miningKey = null; miningProgress = 0;
+      var now = performance.now();
+      if (now - lastNoPickaxeToast > 1500) {
+        lastNoPickaxeToast = now;
+        ui.toast('Need a pickaxe to mine ' + def.name);
+      }
+      return;
+    }
+
     var key = hit.x + ',' + hit.y + ',' + hit.z;
     if (key !== miningKey) { miningKey = key; miningProgress = 0; }
     miningProgress += dt;
-    if (miningProgress >= def.hardness) {
-      inventory.onBlockBroken(blockId);
+    var required = inventory.isCreative() ? 0 : def.hardness;
+    if (miningProgress >= required) {
+      if (!inventory.isCreative()) inventory.onBlockBroken(blockId);
       world.setBlock(hit.x, hit.y, hit.z, 0);
       miningKey = null; miningProgress = 0;
     }
@@ -322,6 +364,7 @@
       ui.updateHotbar(inventory);
       ui.updateResources(inventory);
       ui.updateDayNight(isDay(), dayCount, dayTime);
+      ui.updateMode(inventory.mode);
     }
 
     renderer.render(scene, camera);

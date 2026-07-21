@@ -133,19 +133,19 @@
   var DEFS = {};
   DEFS[B.GRASS] = { name: 'Grass', solid: true, transparent: false, faces: faceSet(TILES.grass_top, TILES.grass_side, TILES.dirt), hardness: 0.4, drop: B.DIRT, hotbar: true };
   DEFS[B.DIRT] = { name: 'Dirt', solid: true, transparent: false, faces: faceSet(TILES.dirt, TILES.dirt, TILES.dirt), hardness: 0.4, drop: B.DIRT, hotbar: true };
-  DEFS[B.STONE] = { name: 'Stone', solid: true, transparent: false, faces: faceSet(TILES.stone, TILES.stone, TILES.stone), hardness: 1.2, drop: B.STONE, hotbar: true };
+  DEFS[B.STONE] = { name: 'Stone', solid: true, transparent: false, faces: faceSet(TILES.stone, TILES.stone, TILES.stone), hardness: 1.2, drop: B.STONE, hotbar: true, requiresPickaxe: true };
   DEFS[B.SAND] = { name: 'Sand', solid: true, transparent: false, faces: faceSet(TILES.sand, TILES.sand, TILES.sand), hardness: 0.4, drop: B.SAND, hotbar: true };
   DEFS[B.WOOD] = { name: 'Wood Log', solid: true, transparent: false, faces: faceSet(TILES.wood_top, TILES.wood_side, TILES.wood_top), hardness: 0.9, drop: B.WOOD, hotbar: true, resource: 'wood' };
   DEFS[B.LEAVES] = { name: 'Leaves', solid: true, transparent: true, faces: faceSet(TILES.leaves, TILES.leaves, TILES.leaves), hardness: 0.2, drop: 0, hotbar: false };
   DEFS[B.PLANKS] = { name: 'Planks', solid: true, transparent: false, faces: faceSet(TILES.planks, TILES.planks, TILES.planks), hardness: 0.7, drop: B.PLANKS, hotbar: true };
-  DEFS[B.COAL_ORE] = { name: 'Coal Ore', solid: true, transparent: false, faces: faceSet(TILES.coal_ore, TILES.coal_ore, TILES.coal_ore), hardness: 1.4, drop: 0, hotbar: false, resource: 'coal' };
-  DEFS[B.IRON_ORE] = { name: 'Iron Ore', solid: true, transparent: false, faces: faceSet(TILES.iron_ore, TILES.iron_ore, TILES.iron_ore), hardness: 1.8, drop: 0, hotbar: false, resource: 'iron' };
+  DEFS[B.COAL_ORE] = { name: 'Coal Ore', solid: true, transparent: false, faces: faceSet(TILES.coal_ore, TILES.coal_ore, TILES.coal_ore), hardness: 1.4, drop: 0, hotbar: false, resource: 'coal', requiresPickaxe: true };
+  DEFS[B.IRON_ORE] = { name: 'Iron Ore', solid: true, transparent: false, faces: faceSet(TILES.iron_ore, TILES.iron_ore, TILES.iron_ore), hardness: 1.8, drop: 0, hotbar: false, resource: 'iron', requiresPickaxe: true };
   DEFS[B.GLASS] = { name: 'Glass', solid: true, transparent: true, faces: faceSet(TILES.glass, TILES.glass, TILES.glass), hardness: 0.4, drop: B.GLASS, hotbar: true };
   DEFS[B.WATER] = { name: 'Water', solid: false, transparent: true, liquid: true, faces: faceSet(TILES.water, TILES.water, TILES.water), hardness: 9999, drop: 0, hotbar: false };
-  DEFS[B.BRICK] = { name: 'Brick', solid: true, transparent: false, faces: faceSet(TILES.brick, TILES.brick, TILES.brick), hardness: 1.2, drop: B.BRICK, hotbar: true };
-  DEFS[B.GOLD_ORE] = { name: 'Gold Ore', solid: true, transparent: false, faces: faceSet(TILES.gold_ore, TILES.gold_ore, TILES.gold_ore), hardness: 2.0, drop: 0, hotbar: false, resource: 'gold' };
+  DEFS[B.BRICK] = { name: 'Brick', solid: true, transparent: false, faces: faceSet(TILES.brick, TILES.brick, TILES.brick), hardness: 1.2, drop: B.BRICK, hotbar: true, requiresPickaxe: true };
+  DEFS[B.GOLD_ORE] = { name: 'Gold Ore', solid: true, transparent: false, faces: faceSet(TILES.gold_ore, TILES.gold_ore, TILES.gold_ore), hardness: 2.0, drop: 0, hotbar: false, resource: 'gold', requiresPickaxe: true };
   DEFS[B.BEDROCK] = { name: 'Bedrock', solid: true, transparent: false, faces: faceSet(TILES.bedrock, TILES.bedrock, TILES.bedrock), hardness: Infinity, drop: 0, hotbar: false };
-  DEFS[B.DIAMOND_ORE] = { name: 'Diamond Ore', solid: true, transparent: false, faces: faceSet(TILES.diamond_ore, TILES.diamond_ore, TILES.diamond_ore), hardness: 2.5, drop: 0, hotbar: false, resource: 'diamond' };
+  DEFS[B.DIAMOND_ORE] = { name: 'Diamond Ore', solid: true, transparent: false, faces: faceSet(TILES.diamond_ore, TILES.diamond_ore, TILES.diamond_ore), hardness: 2.5, drop: 0, hotbar: false, resource: 'diamond', requiresPickaxe: true };
   DEFS[B.CACTUS] = { name: 'Cactus', solid: true, transparent: false, faces: faceSet(TILES.cactus, TILES.cactus, TILES.cactus), hardness: 0.4, drop: B.CACTUS, hotbar: false };
 
   G.Blocks = { B: B, DEFS: DEFS, atlasTexture: texture, TILE_GRID: GRID };

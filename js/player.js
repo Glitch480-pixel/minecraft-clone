@@ -18,6 +18,7 @@
     this.onGround = false;
     this.health = 20; this.maxHealth = 20;
     this.alive = true;
+    this.invulnerable = false;
     this.locked = false;
     this.reach = 6;
     this.sensitivity = 0.0022;
@@ -133,7 +134,7 @@
   };
 
   Player.prototype.damage = function (amount) {
-    if (!this.alive) return;
+    if (!this.alive || this.invulnerable) return;
     this.health -= amount;
     this.lastDamageTime = performance.now();
     if (this.health <= 0) {
@@ -148,7 +149,7 @@
   };
 
   Player.prototype.respawn = function (x, z) {
-    var y = this.world.getSurfaceY(x, z) + 2;
+    var y = this.world.getSurfaceY(x, z) + 1;
     this.position.set(x, y, z);
     this.velocity.set(0, 0, 0);
     this.health = this.maxHealth;

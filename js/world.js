@@ -67,6 +67,9 @@
   };
 
   World.prototype.getBlock = function (wx, wy, wz) {
+    // Floor defensively: a fractional index into the chunk's typed array
+    // silently returns undefined, which callers would misread as "solid ground".
+    wx = Math.floor(wx); wy = Math.floor(wy); wz = Math.floor(wz);
     if (wy < 0 || wy >= CH) return 0;
     var cx = Math.floor(wx / CS), cz = Math.floor(wz / CS);
     var c = this.getChunk(cx, cz);
@@ -82,6 +85,7 @@
   };
 
   World.prototype.setBlock = function (wx, wy, wz, id, skipOverride) {
+    wx = Math.floor(wx); wy = Math.floor(wy); wz = Math.floor(wz);
     if (wy < 0 || wy >= CH) return false;
     var cx = Math.floor(wx / CS), cz = Math.floor(wz / CS);
     var c = this.getChunk(cx, cz);
@@ -225,6 +229,7 @@
   };
 
   World.prototype.getSurfaceY = function (wx, wz) {
+    wx = Math.floor(wx); wz = Math.floor(wz);
     var cx = Math.floor(wx / CS), cz = Math.floor(wz / CS);
     this.generateChunk(cx, cz);
     for (var y = CH - 1; y >= 1; y--) {
