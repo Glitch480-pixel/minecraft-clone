@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garry's Mod Fan Hub — Mods, Tips &amp; Chaos</title>
+<meta name="description" content="A fan hub for Garry's Mod: popular Workshop mods, building tips, and fun things to do when you're bored.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="#top" class="brand">
+      <span class="brand-icon">🔧</span>
+      <span class="brand-text">GMod<span class="accent">Hub</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#mods">Mods</a></li>
+      <li><a href="#tips">Building Tips</a></li>
+      <li><a href="#fun">Fun Stuff</a></li>
+      <li><a href="#signup">Get Tips</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="top" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-kicker">⚡ Unofficial fan-made hub</p>
+      <h1 class="hero-title">
+        Welcome to the <span class="accent-orange">Garry's</span><span class="accent-blue">Mod</span> Fan Hub
+      </h1>
+      <p class="hero-subtitle">
+        Garry's Mod (GMod) is a physics sandbox built on Valve's Source engine. There's no set goal — you
+        spawn props, ragdolls, NPCs, vehicles, and tools, then glue it all together with wire, welds, and
+        raw creativity. Thanks to the Steam Workshop, it's been extended for nearly two decades with mods
+        for building, roleplay, combat, and total nonsense. This page rounds up the best of it.
+      </p>
+      <div class="hero-actions">
+        <a href="#mods" class="btn btn-primary">Browse Popular Mods</a>
+        <a href="#signup" class="btn btn-ghost">Get Daily Tips</a>
+      </div>
+    </div>
+    <div class="hero-props" aria-hidden="true">
+      <span class="prop prop-1">📦</span>
+      <span class="prop prop-2">🛢️</span>
+      <span class="prop prop-3">🪑</span>
+      <span class="prop prop-4">🚗</span>
+      <span class="prop prop-5">⚙️</span>
+      <span class="prop prop-6">🧲</span>
+    </div>
+  </section>
+
+  <section id="mods" class="section">
+    <div class="section-heading">
+      <h2>Popular Steam Workshop Mods</h2>
+      <p>A dozen addons that show up on almost every serious GMod build — tools, vehicles, weapons, gamemodes, and content packs.</p>
+    </div>
+    <div class="mod-grid">
+
+      <article class="mod-card">
+        <div class="mod-icon">🧵</div>
+        <h3>Wiremod</h3>
+        <p>The backbone of advanced building. Adds wire-connectable entities — gates, buttons, sensors,
+          the Expression 2 (E2) programming chip — so you can build logic circuits, control systems,
+          and automated contraptions.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=160250458" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🎭</div>
+        <h3>PAC3</h3>
+        <p>"Player Appearance Customization" lets you attach props, effects, and bones to your character
+          (or props/vehicles) to build custom outfits, mechs, and cosmetic rigs — piece by piece.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=104691717" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🚙</div>
+        <h3>simfphys — LUA Vehicles (Base)</h3>
+        <p>The vehicle framework behind most driveable cars, bikes, and trucks in the Workshop. Handles
+          realistic-ish handling, damage, and customization, and almost every vehicle pack depends on it.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=771487490" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">💾</div>
+        <h3>Advanced Duplicator 2</h3>
+        <p>Save entire contraptions — props, welds, wire circuits and all — to a file and paste them back
+          instantly. Essential for sharing builds and not losing hours of work to a server crash.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=773402917" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🏙️</div>
+        <h3>DarkRP</h3>
+        <p>The classic (and classically chaotic) roleplay gamemode: jobs, money, printers, and props you
+          can buy and sell. Basically the reason "raiding a base" became a GMod pastime.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=248302805" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🕵️</div>
+        <h3>Prop Hunt</h3>
+        <p>Hide-and-seek with physics props. One team disguises itself as furniture and junk scattered
+          around the map, the other team hunts them down before the timer runs out.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=135509255" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🔪</div>
+        <h3>TTT2 (Trouble in Terrorist Town 2)</h3>
+        <p>A social-deduction shooter: innocents, detectives, and secret traitors armed with silenced
+          weapons and gadgets. The modern, actively-maintained rebuild of the original TTT gamemode.</p>
+        <a class="mod-link" href="https://steamcommunity.com/workshop/filedetails/?id=1357745995" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🔫</div>
+        <h3>CW 2.0 Base Pack</h3>
+        <p>"Customizable Weaponry" — a popular weapon base with attachment systems, dynamic recoil, and
+          firemodes. Most CS:GO/Insurgency-style weapon packs on the Workshop build on top of this.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1586951866" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🧍</div>
+        <h3>Playermodels Megapack</h3>
+        <p>A huge collection (300+) of ready-to-use playermodels in one subscription — great for RP
+          servers, machinima, or just not wanting to look like default Barney forever.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=843965836" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">📐</div>
+        <h3>Precision Tool</h3>
+        <p>Projects a measurement grid onto whatever you're pointing at, so you can push, pull, and
+          rotate props to exact distances and angles instead of eyeballing every alignment.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=104482086" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🌌</div>
+        <h3>Stargate Carter's Addon Pack</h3>
+        <p>A legendary sci-fi content pack: working stargates, DHDs, shields, and ship parts. A staple of
+          Spacebuild and sci-fi RP servers for well over a decade.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=180077636" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+      <article class="mod-card">
+        <div class="mod-icon">🪖</div>
+        <h3>Star Wars Playermodel &amp; NPC Pack</h3>
+        <p>Clone troopers, Jedi, and other Star Wars characters as both playermodels and fightable NPCs —
+          perfect for staging Clone Wars battles or Star Wars RP.</p>
+        <a class="mod-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=454351026" target="_blank" rel="noopener noreferrer">View on Steam Workshop ↗</a>
+      </article>
+
+    </div>
+    <p class="mod-disclaimer">Workshop items can be renamed, removed, or reuploaded by their authors over time — if a link looks off, search the title directly on the Steam Workshop.</p>
+  </section>
+
+  <section id="tips" class="section section-alt">
+    <div class="section-heading">
+      <h2>Building Tips</h2>
+      <p>Practical habits that separate a stable contraption from a pile of props waiting to explode.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-num">01</span>
+        <h3>Learn the tool gun context menu</h3>
+        <p>Hold <kbd>Q</kbd> for the spawn menu and use the <kbd>Tool</kbd> tab to browse every tool's
+          options before spawning anything — most tools have settings (mode, constraint type, force
+          limits) that are easy to miss if you never open the menu.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">02</span>
+        <h3>Weld vs. nocollide — know the difference</h3>
+        <p>Weld locks two props together rigidly, like one solid object. Nocollide just stops two props
+          from colliding but lets them move independently. Use weld for a chassis, nocollide for
+          overlapping parts like suspension arms or hinged panels that need to pass through each other.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">03</span>
+        <h3>Freeze props while you stack them</h3>
+        <p>Right-click with the Physics Gun to freeze a prop in place. Build your stack frozen, then
+          unfreeze (or weld) once everything is positioned — it stops half-placed props from sliding or
+          falling before you're done.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">04</span>
+        <h3>Use the Axis tool for anything that rotates</h3>
+        <p>Doors, turrets, wheels, and cranes need the Axis tool, not a weld. Set friction and torque
+          limits deliberately — too little friction and things spin freely under gravity, too much and
+          motors can't move the joint at all.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">05</span>
+        <h3>Start Wiremod simple</h3>
+        <p>Before writing Expression 2 code, get comfortable with basic gates: a button wired to a
+          gate, a gate wired to a thruster or motor. Understanding signal flow with simple parts makes
+          E2 scripting click a lot faster later.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">06</span>
+        <h3>Keep contraptions light and low</h3>
+        <p>Source's physics engine gets unstable with heavy, top-heavy, or high-prop-count builds.
+          Lower your center of mass, avoid stacking dozens of heavy props unsupported, and test with a
+          nudge (or a small explosion) before adding more weight.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">07</span>
+        <h3>Pick the right joint for the job</h3>
+        <p>Rope and elastic for tension (suspension, cranes), ballsocket for flexible pivots (limbs,
+          swinging arms), weld for anything that must stay perfectly rigid. Mixing these deliberately is
+          how stable-but-flexible builds are made.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">08</span>
+        <h3>Save early, save often</h3>
+        <p>Use Advanced Duplicator 2 (or the built-in Duplicator) to save contraptions to disk regularly.
+          Server crashes and map changes will erase unsaved work, and there's nothing worse than losing
+          a two-hour build to a map restart.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">09</span>
+        <h3>Use grid snap / Precision tools for symmetry</h3>
+        <p>Eyeballing alignment gets old fast. Precision-style tools project a measurement grid onto
+          props so you can align, space, and rotate things to exact values — much faster than nudging
+          with the physics gun.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">10</span>
+        <h3>Learn a few keyboard shortcuts</h3>
+        <p><kbd>Q</kbd> spawn menu, <kbd>C</kbd> context menu (for the Physics Gun's constraint options),
+          <kbd>R</kbd> is the default rope tool bind, and scroll wheel adjusts most tool ranges/values —
+          learning these saves constant menu-diving mid-build.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fun" class="section">
+    <div class="section-heading">
+      <h2>Fun Things to Do When Bored</h2>
+      <p>No objective, no problem. Solo or with friends, here's what to do when you just opened GMod with no plan.</p>
+    </div>
+    <div class="fun-grid">
+      <div class="fun-card">
+        <div class="fun-icon">🎯</div>
+        <h3>Play Prop Hunt</h3>
+        <p>Grab a Prop Hunt server, disguise yourself as a traffic cone, and try not to move when a
+          hunter walks by. Somehow still tense after a decade.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🚗</div>
+        <h3>Build a working vehicle</h3>
+        <p>Combine simfphys with Wiremod to build a car with working headlights, a horn, and a
+          speedometer. Then find the biggest ramp on the map.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🤸</div>
+        <h3>Ragdoll physics experiments</h3>
+        <p>Launch ragdolls off cliffs with the physics gun, stack them into pyramids, or rig up a
+          catapult. The ragdoll physics never stop being funny.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🗺️</div>
+        <h3>Explore community maps</h3>
+        <p>Beyond gm_construct, the Workshop has huge cities, flooded facilities, and sprawling
+          sandboxes built by mappers. Noclip around and see what people have made.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">⚔️</div>
+        <h3>Stage an NPC battle</h3>
+        <p>Spawn Combine soldiers against rebels (or zombies against everyone) and watch the AI fight it
+          out — bonus points for building a fortified base for one side first.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🎬</div>
+        <h3>Try machinima</h3>
+        <p>Use playermodels, PAC3, and the built-in camera/demo tools to block out a scene and record a
+          short film. GMod's roots as a machinima tool are still fully intact.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🕹️</div>
+        <h3>Play TTT or DarkRP with friends</h3>
+        <p>Nothing beats the social chaos of accusing your best friend of being the traitor, or getting
+          raided the moment you finish your DarkRP base.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🎢</div>
+        <h3>Build a Rube Goldberg machine</h3>
+        <p>Chain together buttons, dominoes, seesaws, and explosives so that pressing one switch sets
+          off an absurd, over-engineered reaction.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">👕</div>
+        <h3>Design a PAC3 outfit</h3>
+        <p>Spend an unreasonable amount of time building a custom look piece by piece — armor, a mech
+          suit, floating props, whatever look you can imagine.</p>
+      </div>
+      <div class="fun-card">
+        <div class="fun-icon">🧨</div>
+        <h3>Stress-test your own builds</h3>
+        <p>Built something sturdy? Throw explosives, cars, or an army of NPCs at it and see how much
+          punishment it can take before it falls apart.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup" class="section signup-section">
+    <div class="signup-card">
+      <div class="signup-text">
+        <h2>Get Daily Garry's Mod Tips</h2>
+        <p>One quick tip a day — a tool trick, a hidden Wiremod feature, a Workshop gem worth
+          subscribing to. No spam, unsubscribe whenever.</p>
+      </div>
+      <form id="signupForm" class="signup-form" novalidate>
+        <div class="form-row">
+          <label for="emailInput" class="sr-only">Email address</label>
+          <input
+            type="email"
+            id="emailInput"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          >
+          <button type="submit" class="btn btn-primary" id="signupBtn">Sign Me Up</button>
+        </div>
+        <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Fan-made and unofficial. Garry's Mod is a trademark of Facepunch Studios. Not affiliated with Valve or Facepunch.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
