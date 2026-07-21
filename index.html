@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voxel Craft</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="damageFlash"></div>
+<div id="crosshair"></div>
+
+<div id="hud">
+  <div id="topLeft">
+    <div id="healthBar">
+      <span id="healthLabel">Health</span>
+      <div id="healthTrack"><div id="healthFill"></div></div>
+    </div>
+    <div id="resourceBar"></div>
+  </div>
+  <div id="topRight">
+    <div id="dayNightIndicator">
+      <span id="dnIcon">&#9728;</span>
+      <span id="dnLabel">Day 1</span>
+    </div>
+    <div id="saveControls">
+      <button id="saveBtn">Save</button>
+      <button id="loadBtn">Load</button>
+      <button id="exportBtn">Export</button>
+      <button id="importBtn">Import</button>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div id="hotbar"></div>
+
+<div id="craftingPanel" class="hidden">
+  <h2>Crafting</h2>
+  <div id="craftResources"></div>
+  <div id="craftRecipes"></div>
+  <div class="hint">Press C or E to close</div>
+</div>
+
+<div id="deathScreen" class="hidden">
+  <h1>You Died</h1>
+  <button id="respawnBtn">Respawn</button>
+</div>
+
+<div id="startScreen">
+  <h1>Voxel Craft</h1>
+  <p>WASD to move, Mouse to look, Space to jump, Shift to sprint.<br>
+     Left Click: break block / shoot gun &nbsp; Right Click: place block<br>
+     1-9 or scroll: select hotbar slot &nbsp; C or E: crafting menu<br>
+     F5: save game &nbsp; F9: load game<br>
+     Zombies &amp; Skeletons spawn at night and burn in daylight. Craft guns to fight back!</p>
+  <button id="startBtn">Click to Play</button>
+  <div id="loadHint"></div>
+</div>
+
+<script src="js/lib/three.min.js"></script>
+<script src="js/noise.js"></script>
+<script src="js/blocks.js"></script>
+<script src="js/world.js"></script>
+<script src="js/player.js"></script>
+<script src="js/mobs.js"></script>
+<script src="js/guns.js"></script>
+<script src="js/inventory.js"></script>
+<script src="js/save.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
